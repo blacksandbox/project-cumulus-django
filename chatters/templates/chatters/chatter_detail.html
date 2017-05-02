@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+
+{% block content %}
+  
+  <h5>{{ object.user }} says</h5>
+  <p>
+      {{ object.content }}</br>
+      {{ object.timestamp | timesince }} ago
+  </p>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block title%}{{block.super}} | New chatter{% endblock title %}
+{% block content %}
+    {% include "chatters/form.html" with form=form btn_title='Chatter' %}
+{% endblock content %}
