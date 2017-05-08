@@ -3,6 +3,13 @@ from django import forms
 from . import models
 
 class ChatterModelForm(forms.ModelForm):
+    
+    content = forms.CharField(
+        label='', 
+        max_length=200, 
+        widget=forms.Textarea(attrs={"class":"form-control", "placeholder": "BLAHBLAHBLAH"})
+    )
+    
     class Meta: 
         model = models.Chatter
         

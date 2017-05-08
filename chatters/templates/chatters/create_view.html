@@ -2,5 +2,12 @@
 
 {% block title%}{{block.super}} | New chatter{% endblock title %}
 {% block content %}
-    {% include "chatters/form.html" with form=form btn_title='Chatter' %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <!-- put create form here -->
+            {% include "chatters/form.html" with form=form btn_title='Chatter' %}
+        
+        </div>
+    </div>
+    
 {% endblock content %}

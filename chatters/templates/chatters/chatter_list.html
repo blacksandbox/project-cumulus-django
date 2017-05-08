@@ -1,29 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% include "chatters/search_form.html" %}
+    <!-- include "chatters/search_form.html" -->
+    <!-- i took out the template markup because it was making it look up the template for real -->
+    
+    {% if not request.GET.q %} <!-- if search is not being performed -->
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3">
+                <!-- put create form here -->
+                {% include "chatters/form.html" with form=create_form action_url=create_url btn_title='Chatter' %}
+            
+            </div>
+        </div>
+    {% endif %}
+    
     <br/>
     
     {% for obj in object_list %}
-
-        <div class="media">
-            {% if obj.image %}
-                <img class="d-flex mr-3" src="..." alt="Generic placeholder image">
-            {% else %}
-                <img class="d-flex mr-3" src="..." alt="Generic placeholder image">
-            {% endif %}
-            
-          <div class="media-body">
-            <h5 class="mt-0">{{ obj.user }} says</h5>
-             {{ obj.content }}</br>
-             {{ obj.timestamp | timesince }} ago
-             |
-             <a href="{{obj.get_absolute_url}}">view</a>
-          </div>
+        <div class="row">
+            <div class="col-sm-3" style="background-color:#ccc">
+                <a href="#">
+                    {% if obj.image %}
+                        <img class="media-object" src="..." alt="...">
+                    {% else %}
+                        <img class="media-object" src="..." alt="...">
+                    {% endif %}
+                </a>
+                <h4 class="media-heading">{{ obj.user }} says</h4>
+            </div>
+                
+            <div class="col-sm-9">
+                 {{ obj.content }}</br>
+                 {{ obj.timestamp | timesince }} ago
+                 |
+                 <a href="{{obj.get_absolute_url}}">view</a>
+            </div>
         </div>
-        
-        
-
         
         <hr/>
 

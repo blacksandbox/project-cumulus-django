@@ -20,11 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
+from chatters.views import ChatterListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # ex: ~/, the ROOT
-    url(r'^$', views.home, name='home'),
+    
+    # url(r'^$', views.home, name='home'), <- use this if you want a standalone homepage
+    url(r'^$', ChatterListView.as_view(), name='home'),
     
     #includes
     url(r'^chatter/', include('chatters.urls', namespace='chatter')),

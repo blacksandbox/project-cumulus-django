@@ -2,9 +2,19 @@
 
 {% block content %}
   
-  <h5>{{ object.user }} says</h5>
-  <p>
-      {{ object.content }}</br>
-      {{ object.timestamp | timesince }} ago
-  </p>
+  
+  <div class="row">
+    <div class="col-sm-3" style="background-color:#ccc">
+      <h5>{{ object.user }} says</h5>
+    </div>
+    <div class="col-sm-9">
+      <p>
+        {{ object.content }}<br/>
+        {{ object.timestamp | timesince }} ago
+      </p>
+    </div>
+  </div>
+    
+  </div>
+  
 {% endblock %}

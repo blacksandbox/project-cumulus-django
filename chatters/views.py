@@ -59,10 +59,13 @@ class ChatterListView(generic.ListView):
         return qs
         
     #inherited function
-    #def get_context_data(self, *args, **kwargs): 
+    def get_context_data(self, *args, **kwargs): 
         # automatically creates context.
         # you can super this, and add your own.
-        #context = super(ChatterListView, self).get_context_data(*args, **kwargs)
+        context = super(ChatterListView, self).get_context_data(*args, **kwargs)
+        context['create_form'] = forms.ChatterModelForm
+        context['create_url'] = reverse_lazy("chatter:create")
+        return context
     
     
     
